@@ -10,7 +10,7 @@ public class port {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     @Column(name = "image", nullable = false)
     private String image;
     @Column(name = "title", nullable = false, length = 100)
@@ -19,11 +19,10 @@ public class port {
     private String description;
     @Column(name = "address", nullable = false, length = 10)
     private String address;
-    @Column(nullable = false)
+    @Column(name ="status")
     private int status;
 
-    @OneToOne(mappedBy = "port", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private portDetail portDetail;
+
 
 //    Constructor
     public port() {}
@@ -35,7 +34,7 @@ public class port {
         this.address = address;
     }
 
-    public port(Long id, String image, String title, String description, String address) {
+    public port(int id, String image, String title, String description, String address) {
         this.id = id;
         this.image = image;
         this.title = title;
@@ -44,11 +43,12 @@ public class port {
     }
 //    Getter setter
 
-    public Long getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -84,11 +84,13 @@ public class port {
         this.address = address;
     }
 
-    public portDetail getPortDetail() {
-        return portDetail;
+    public int getStatus() {
+        return status;
     }
 
-    public void setPortDetail(portDetail portDetail) {
-        this.portDetail = portDetail;
+    public void setStatus(int status) {
+        this.status = status;
     }
+
+
 }
